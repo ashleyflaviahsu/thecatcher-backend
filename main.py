@@ -24,7 +24,6 @@ class AnalyzeRequest(BaseModel):
 
 # Response schema (what Android receives from OpenAI)
 class AnalyzeResponse(BaseModel):
-    model: str
     sender: str
     message_summary: str
     risk_level: str

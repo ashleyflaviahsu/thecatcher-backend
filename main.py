@@ -18,6 +18,7 @@ def root():
 class AnalyzeRequest(BaseModel):
     sender: str
     text: str
+    userLanguage: str
 
 
 

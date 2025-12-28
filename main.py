@@ -45,6 +45,7 @@ def analyze_message(request: AnalyzeRequest):
         (b) share personal or account-related information,
         (c) act under abnormal or manipulated emotional influence
     - Consider the contemporary digital threat landscape and evolving scam techniques.
+    - Focus on risks that may not be immediately obvious to the user, including potential account compromise, impersonation, or other digital threats.
     - Only flag scams when there is reasonable suspicion.
     - When risk_level is assessed as LOW, write the reason in "risk_reason".
     - When risk_level is assessed as HIGH, provide a concise scenario explaining the reason and generate "user_warning" accordingly.
@@ -58,6 +59,7 @@ def analyze_message(request: AnalyzeRequest):
         (d) Use a concrete scenario to show why the message is high risk.
         (e) Explain the risk through this scenario calmly and objectively.
         (f) Sound like a calm, rational friend.
+        (e) Limit "user_warning" to fewer than 30 words.
 
     Required JSON schema:
     {

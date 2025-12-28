@@ -33,12 +33,13 @@ class AnalyzeResponse(BaseModel):
 
 @app.post("/analyze/", response_model=AnalyzeResponse)
 def analyze_message(request: AnalyzeRequest):
-    system_prompt = """
+    system_prompt = f"""
     You are acting as a scam and fraud detection assistant.
 
     Rules:
     - Always respond in valid JSON.
     - Do NOT include any text outside the JSON.
+    - All string values in the JSON must be written in {request.userLanguage}, regardless of the language of the incoming message.
     - Summarize the intent and context of the received message in "message_summary".
     - Consider whether the message could realistically lead the receiver to:
         (a) transfer money,

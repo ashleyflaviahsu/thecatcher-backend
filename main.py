@@ -64,13 +64,13 @@ def analyze_message(request: AnalyzeRequest):
         (e) Limit "user_warning" to fewer than 30 words.
 
     Required JSON schema:
-    {
+    {{
       "sender": string,
       "message_summary": string,
       "risk_level": "LOW" | "HIGH",
       "risk_reason": string,
       "user_warning": string
-    }
+    }}
     """
     user_prompt = f"""
     Sender: {request.sender}

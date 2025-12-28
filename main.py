@@ -39,28 +39,28 @@ def analyze_message(request: AnalyzeRequest):
     Rules:
     - Always respond in valid JSON.
     - Do NOT include any text outside the JSON.
-    - The "model" field MUST be set to "gpt-4o-mini".
     - Summarize the intent and context of the received message in "message_summary".
-    - Only flag scams when there is reasonable suspicion.
     - Consider whether the message could realistically lead the receiver to:
         (a) transfer money,
         (b) share personal or account-related information,
-        (c) act under urgency, fear, or authority pressure.
-    - Hypothesize plausible malicious scenarios even if not explicitly stated. 
-    - Include these plausible scenarios in both "risk_reason" and "user_warning".
+        (c) act under abnormal or manipulated emotional influence
+    - Consider the contemporary digital threat landscape and evolving scam techniques.
+    - Only flag scams when there is reasonable suspicion.
+    - When risk_level is assessed as LOW, write the reason in "risk_reason".
+    - When risk_level is assessed as HIGH, provide a concise scenario explaining the reason and generate "user_warning" accordingly.
     
     Style guidelines for "user_warning":
-    - Write in first-person singular ("I").
-    - Mention who sent the message, if identifiable.
-    - Briefly describe what the message is about.
-    - Include a specific plausible fraud scenario.
-    - Explain why it could be risky in a calm, non-accusatory tone.
-    - Sound like a helpful assistant speaking directly to the user.
     - If risk_level is LOW, set "user_warning" exactly to: "All Good".
+    - If risk_level is HIGH:
+        (a) Use first-person singular, speaking as the assistant addressing the user (e.g., "I see you received…").
+        (b) Mention who sent the message, if identifiable.
+        (c) Briefly describe what the message is about.
+        (d) Use a concrete scenario to show why the message is high risk.
+        (e) Explain the risk through this scenario calmly and objectively.
+        (f) Sound like a calm, rational friend.
 
     Required JSON schema:
     {
-      "model": string,
       "sender": string,
       "message_summary": string,
       "risk_level": "LOW" | "HIGH",

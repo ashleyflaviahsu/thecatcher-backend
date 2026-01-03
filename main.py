@@ -79,6 +79,7 @@ def analyze_message(request: AnalyzeRequest):
         model="gpt-4o-mini",
         instructions=system_prompt,
         input=user_prompt,
+        store=False,
         temperature = 0.2,
         max_output_tokens = 300 #1 token ≈ 4 characters; 1 token ≈ ¾ of a word
     )
